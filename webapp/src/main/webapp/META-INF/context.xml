@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/library_project">
+    <ResourceLink name="jdbc/phonebook" global="jdbc/global_phonebook" auth="Container" type="javax.sql.DataSource" />
+</Context>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.getjavajobs.larionov.phonebook.model.Employee" table="Employees">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="string" column="first_name" not-null="true"/>
+        <property name="lastName" type="string" column="last_name" not-null="true"/>
+        <property name="project" type="string" column="project" not-null="true"/>
+        <property name="email" type="string" column="email" not-null="true"/>
+        <many-to-one name="department" class="com.getjavajobs.larionov.phonebook.model.Department" not-null="false" column="department_id"/>
+
+        <bag name="phoneList" table="phones" fetch="select" lazy="false" inverse="false" cascade="all-delete-orphan">
+            <key column="employee_id" not-null="true"/>
+            <one-to-many class="com.getjavajobs.larionov.phonebook.model.Phone" />
+        </bag>
+    </class>
+
+</hibernate-mapping>
